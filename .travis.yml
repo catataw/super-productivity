@@ -73,27 +73,11 @@ deploy:
       branch: master
       condition: $TRAVIS_OS_NAME = linux
       tags: true
-  - provider: script
-    script: brew update && brew install vitorgalvao/tiny-scripts/cask-repair && openssl aes-256-cbc -K $encrypted_c04542ca1075_key -iv $encrypted_c04542ca1075_iv -in build/hub.enc -out ~/.config/hub -d && cask-repair -b -v $TRAVIS_TAG superproductivity
-    skip_cleanup: true
-    on:
-      branch: master
-      condition: $TRAVIS_OS_NAME = osx
-      tags: true
-
-  #after_success:
-  #  - 'echo "DIST-RESULT:"'
-  #  - 'ls -l ./dist'
-#  - |
-#    if [ -n "$TRAVIS_TAG" ] && [ "$TRAVIS_OS_NAME" == "osx" ]; then
-#      brew update
-#      brew install vitorgalvao/tiny-scripts/cask-repair
-#      openssl aes-256-cbc -K $encrypted_c04542ca1075_key -iv $encrypted_c04542ca1075_iv -in build/hub.enc -out ~/.config/hub -d
-#      cask-repair -b -v $TRAVIS_TAG superproductivity
-#    fi
-#  - |
-#    if [ -n "$TRAVIS_TAG" ] && [ "$TRAVIS_OS_NAME" == "linux" ]; then
-#      sshpass -p "$DEPLOY_PASS" rsync -avz ./ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
-#      openssl aes-256-cbc -K $encrypted_c04542ca1075_key -iv $encrypted_c04542ca1075_iv -in .snapcraft/travis_snapcraft.cfg -out .snapcraft/snapcraft.cfg -d
-#      docker run -v $(pwd):$(pwd) -t snapcore/snapcraft sh -c "apt update -qq && cd $(pwd) && snapcraft push ./app-builds/*.snap --release stable"
-#    fi
+# NOTE: this would only work, if we could auto publish the github draft
+#  - provider: script
+#    script: brew update && brew install vitorgalvao/tiny-scripts/cask-repair && openssl aes-256-cbc -K $encrypted_c04542ca1075_key -iv $encrypted_c04542ca1075_iv -in build/hub.enc -out ~/.config/hub -d && cask-repair -b -v $TRAVIS_TAG superproductivity
+#    skip_cleanup: true
+#    on:
+#      branch: master
+#      condition: $TRAVIS_OS_NAME = osx
+#      tags: true
