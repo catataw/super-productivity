@@ -16,7 +16,7 @@ matrix:
       addons:
         chrome: stable
     - os: linux
-      dist: trusty
+      dist: xenial
       language: generic
       services:
         - docker
