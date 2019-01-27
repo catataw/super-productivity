@@ -26,6 +26,9 @@ matrix:
 #        - sh -e /etc/init.d/xvfb start
 
 addons:
+  ssh_known_hosts:
+    - the-front-end.de
+    - frs.sourceforge.net
   apt:
     packages:
       - sshpass
